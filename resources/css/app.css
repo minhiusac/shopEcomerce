@@ -7,3 +7,99 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+
+@layer components {
+    .section {
+        @apply py-12 md:py-16;
+    }
+
+    .container {
+        @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    }
+
+    .hero-title {
+        @apply text-3xl md:text-5xl font-semibold leading-tight;
+    }
+
+    .hero-desc {
+        @apply text-gray-600 mt-3;
+    }
+
+    .hero-carousel {
+        @apply relative overflow-hidden rounded-xl ring-1 ring-gray-200;
+    }
+
+    .hero-slide {
+        @apply w-full h-[260px] md:h-[360px] object-cover;
+    }
+
+    .card {
+        @apply bg-white rounded-lg border border-gray-200 shadow-sm hover:shadow transition;
+    }
+
+    .link {
+        @apply text-blue-600 hover:text-blue-700 hover:underline;
+    }
+
+    .img-cover {
+        @apply w-full h-full object-cover;
+    }
+
+    .product .product-media {
+        @apply aspect-[4/3] bg-gray-50 rounded-md overflow-hidden;
+    }
+
+    .badge-sale {
+        @apply absolute top-2 left-2 z-10 bg-red-600 text-white text-xs px-2 py-0.5 rounded;
+    }
+
+    .ratio-16x9 {
+        @apply relative overflow-hidden;
+    }
+
+    .ratio-16x9::before {
+        content: '';
+        display: block;
+        padding-bottom: 56.25%;
+    }
+
+    .ratio-16x9>img {
+        @apply absolute inset-0 w-full h-full object-cover;
+    }
+
+    .feedback-rail {
+        @apply grid grid-cols-1 md:grid-cols-3 gap-6 mt-6;
+    }
+
+    .feedback-card {
+        @apply bg-white rounded-lg border border-gray-200 p-4 shadow-sm;
+    }
+
+    .cta {
+        @apply bg-gray-50 py-12;
+    }
+
+    .cta-title {
+        @apply text-2xl font-semibold;
+    }
+
+    .cta-desc {
+        @apply text-gray-600 mt-2;
+    }
+
+    .cta-input {
+        @apply flex-1 border border-gray-300 px-3 py-2 focus:outline-none;
+    }
+
+    .cta-button {
+        @apply bg-gray-900 text-white px-4;
+    }
+
+    .cat .cat-media {
+        @apply aspect-square rounded-lg overflow-hidden bg-gray-50;
+    }
+
+    .cat .cat-name {
+        @apply text-sm font-medium;
+    }
+}
