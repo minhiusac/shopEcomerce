@@ -4,7 +4,16 @@ import tailwindcss from '@tailwindcss/vite'
 import laravel from 'laravel-vite-plugin'
 import { wayfinder } from '@laravel/vite-plugin-wayfinder'
 
-const isCI = process.env.CI === 'true' || process.env.RENDER === 'true' || process.env.VERCEL === '1'
+//  Tự phát hiện môi trường build (CI/CD hoặc cloud)
+const isCI =
+    process.env.CI === 'true' ||
+    process.env.CI === '1' ||
+    process.env.RENDER === 'true' ||
+    process.env.VERCEL === '1' ||
+    process.env.VERCEL === 'true' ||
+    process.env.NODE_ENV === 'production'
+
+console.log('Building environment:', isCI ? 'CI/Cloud (disable PHP)' : 'Local (enable PHP)')
 
 export default defineConfig({
     plugins: [
@@ -15,8 +24,9 @@ export default defineConfig({
         }),
         react(),
         tailwindcss(),
-        // Chỉ bật wayfinder nếu có PHP 
-        !isCI && wayfinder({
+        // ⚡ Chỉ bật Wayfinder khi chạy local (có PHP)
+        !isCI &&
+        wayfinder({
             formVariants: true,
         }),
     ].filter(Boolean),
@@ -24,4 +34,3 @@ export default defineConfig({
         jsx: 'automatic',
     },
 })
-
