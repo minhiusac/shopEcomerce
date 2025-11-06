@@ -1,8 +1,10 @@
-import { wayfinder } from '@laravel/vite-plugin-wayfinder';
-import tailwindcss from '@tailwindcss/vite';
-import react from '@vitejs/plugin-react';
-import laravel from 'laravel-vite-plugin';
-import { defineConfig } from 'vite';
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import tailwindcss from '@tailwindcss/vite'
+import laravel from 'laravel-vite-plugin'
+import { wayfinder } from '@laravel/vite-plugin-wayfinder'
+
+const isCI = process.env.CI === 'true' || process.env.RENDER === 'true' || process.env.VERCEL === '1'
 
 export default defineConfig({
     plugins: [
@@ -13,11 +15,13 @@ export default defineConfig({
         }),
         react(),
         tailwindcss(),
-        wayfinder({
+        // Chỉ bật wayfinder nếu có PHP 
+        !isCI && wayfinder({
             formVariants: true,
         }),
-    ],
+    ].filter(Boolean),
     esbuild: {
         jsx: 'automatic',
     },
-});
+})
+

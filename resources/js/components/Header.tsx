@@ -40,13 +40,13 @@ export default function Navbar() {
 
                         {/* Products with hover dropdown */}
                         <div className="relative group">
-                            <button
-                                type="button"
+                            <Link
+                                href="/product-page"
                                 className="px-3 py-2 text-sm font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-md transition inline-flex items-center"
                             >
                                 <span>Sản phẩm</span>
                                 <ChevronDownIcon className="ml-1 h-4 w-4 text-gray-500" aria-hidden="true" />
-                            </button>
+                            </Link>
                             <div className="invisible opacity-0 group-hover:visible group-hover:opacity-100 absolute left-0 top-full w-56 rounded-md border border-gray-100 bg-white shadow-lg transition-opacity">
                                 <ul className="py-2">
                                     {productSubItems.map((item) => (
@@ -138,15 +138,14 @@ export default function Navbar() {
 
                             {/* Mobile collapsible Products */}
                             <div>
-                                <button
-                                    type="button"
+                                <Link
+                                    href="/product-page"
                                     className="w-full flex items-center justify-between px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900 rounded-md"
-                                    onClick={() => setIsProductOpenMobile((v) => !v)}
-                                    aria-expanded={isProductOpenMobile}
+                                    onClick={() => setIsMenuOpen(false)}
                                 >
                                     <span>Sản phẩm</span>
-                                    <ChevronDownIcon className={`h-5 w-5 text-gray-500 transition-transform ${isProductOpenMobile ? 'rotate-180' : ''}`} aria-hidden="true" />
-                                </button>
+                                    <ChevronDownIcon className="h-5 w-5 text-gray-500" aria-hidden="true" />
+                                </Link>
                                 {isProductOpenMobile && (
                                     <ul className="ml-4 mt-1 space-y-1">
                                         {productSubItems.map((item) => (
